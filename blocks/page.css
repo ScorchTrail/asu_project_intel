@@ -1,0 +1,19 @@
+/* Overall page grid layout for responsive design */
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.page__content {
+  max-width: 880px;
+  margin: 0 auto 0 auto;
+  padding: 0 20px 0 20px;
+}

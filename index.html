@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intel: Sustainability Through the Ages</title>
+  <link rel="stylesheet" href="./pages/index.css" />
+  <link rel="icon" href="./img/intel-header.svg" type="image/svg+xml" />
+</head>
+<body>
+  <header class="header">
+      <img class="header__image" src="./img/intel-header.svg" alt="Intel Logo" />
+      <h1 class="header__title">
+        Sustainability<br>Through the Ages
+      </h1>
+      <div class="header__line"></div>
+      <p class="header__subtitle">
+        Explore Intel's journey through time, discovering how our commitment to innovation has shaped a more sustainable future for technology and our planet.
+      </p>
+  </header>
+  <!-- Timeline navigation arrows -->
+  <div class="timeline-nav">
+    <button class="timeline-nav__button timeline-nav__button--prev" id="scrollPrev" aria-label="Previous">
+      <span>❮</span>
+    </button>
+    <button class="timeline-nav__button timeline-nav__button--next" id="scrollNext" aria-label="Next">
+      <span>❯</span>
+    </button>
+  </div>
+  <section class="timeline" id="timelineScroll">
+    <div class="card" data-hue="240">
+      <div class="card__image" style="background-image: url('./img/intel_1.png')"></div>
+      <div class="card__badge">1968</div>
+      <h3 class="card__title">Intel Founded</h3>
+      <span class="card__placeholder">Hover to learn more</span>
+      <p class="card__text">
+        Robert Noyce and Gordon Moore rename the newly formed company
+        NM Electronics to Intel Corporation, laying the foundation for
+        decades of technological innovation.
+      </p>
+    </div>
+    <div class="card" data-hue="260">
+      <div class="card__image" style="background-image: url('./img/intel_2.png')"></div>
+      <div class="card__badge">1971</div>
+      <h3 class="card__title">First Microprocessor</h3>
+      <span class="card__placeholder">Hover to learn more</span>
+      <p class="card__text">
+        Intel debuts the 4004, the world's first commercial microprocessor,
+        igniting the microprocessor revolution and propelling the future
+        of computing devices.
+      </p>
+    </div>
+    <div class="card" data-hue="280">
+      <div class="card__image" style="background-image: url('./img/intel_3.png')"></div>
+      <div class="card__badge">1978</div>
+      <h3 class="card__title">8086 Processor</h3>
+      <span class="card__placeholder">Hover to learn more</span>
+      <p class="card__text">
+        Launch of the 8086 processor, establishing the x86 architecture
+        that drives countless PCs and servers in the modern era.
+      </p>
+    </div>
+    <div class="card" data-hue="300">
+      <div class="card__image" style="background-image: url('./img/intel_4.png')"></div>
+      <div class="card__badge">1985</div>
+      <h3 class="card__title">386 Processor</h3>
+      <span class="card__placeholder">Hover to learn more</span>
+      <p class="card__text">
+        Intel introduces the 386 processor with 32-bit architecture,
+        ushering in a new era of performance and multitasking for
+        personal computers.
+      </p>
+    </div>
+    <div class="card" data-hue="320">
+      <div class="card__image" style="background-image: url('./img/intel_5.png')"></div>
+      <div class="card__badge">2006</div>
+      <h3 class="card__title">Peak GHG Emissions</h3>
+      <span class="card__placeholder">Hover to learn more</span>
+      <p class="card__text">
+        This year marks Intel's highest annual greenhouse gas emissions
+        for operations. Over subsequent years, Intel invests heavily in
+        chemical abatement, renewable energy, and energy-efficient
+        manufacturing to reverse this trend.
+      </p>
+    </div>
+    <div class="card" data-hue="220">
+      <div class="card__image" style="background-image: url('./img/intel_6.png')"></div>
+      <div class="card__badge">2020</div>
+      <h3 class="card__title">RISE Strategy</h3>
+      <span class="card__placeholder">Hover to learn more</span>
+      <p class="card__text">
+        Intel launches its RISE (Responsible, Inclusive, Sustainable,
+        Enabling) strategy and 2030 goals, aiming to drive industry-wide
+        progress on climate action, water stewardship, and waste reduction.
+      </p>
+    </div>
+    <div class="card" data-hue="210">
+      <div class="card__image" style="background-image: url('./img/intel_7.png')"></div>
+      <div class="card__badge">2022</div>
+      <h3 class="card__title">Net-Zero By 2040</h3>
+      <span class="card__placeholder">Hover to learn more</span>
+      <p class="card__text">
+        Intel announces its commitment to achieve net-zero greenhouse
+        gas emissions (Scope 1 and 2) across its global operations
+        by 2040, building on years of environmental initiatives.
+      </p>
+    </div>
+    <div class="card" data-hue="200">
+      <div class="card__image" style="background-image: url('./img/intel_8.png')"></div>
+      <div class="card__badge">2023</div>
+      <h3 class="card__title">Renewable Electricity</h3>
+      <span class="card__placeholder">Hover to learn more</span>
+      <p class="card__text">
+        The company achieves 99% renewable electricity usage worldwide,
+        helping to drastically lower carbon emissions and driving progress
+        toward Intel's long-term sustainability goals.
+      </p>
+    </div>
+    <div class="card" data-hue="190">
+      <div class="card__image" style="background-image: url('./img/intel_9.png')"></div>
+      <div class="card__badge">2024</div>
+      <h3 class="card__title">Sustainability Summit</h3>
+      <span class="card__placeholder">Hover to learn more</span>
+      <p class="card__text">
+        Intel hosts its first Sustainability Summit, uniting suppliers,
+        government officials, and industry leaders to collaborate on
+        next-generation sustainable semiconductor manufacturing.
+      </p>
+    </div>
+  </section>
+  <footer class="footer">
+    <p>Scroll to view timeline | Hover over cards to learn more!</p>
+  </footer>
+
+  <!-- Script to apply hue colors to cards -->
+  <script>
+    // Set CSS variables for each card's hue color
+    document.querySelectorAll('.card').forEach(card => {
+      const hue = card.getAttribute('data-hue');
+      card.style.setProperty('--hue', hue);
+    });
+
+    // Add hover effect to cards
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.boxShadow = '0 8px 16px rgba(0, 113, 197, 0.2)';
+      });
+      card.addEventListener('mouseleave', function() {
+        this.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+      });
+    });
+
+    // Timeline scroll navigation
+    const timeline = document.getElementById('timelineScroll');
+    const scrollPrevBtn = document.getElementById('scrollPrev');
+    const scrollNextBtn = document.getElementById('scrollNext');
+
+    if (scrollPrevBtn && scrollNextBtn && timeline) {
+      const scrollAmount = 400; // Scroll distance per click
+
+      scrollPrevBtn.addEventListener('click', () => {
+        timeline.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+
+      scrollNextBtn.addEventListener('click', () => {
+        timeline.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+    }
+  </script>
+</body>
+</html>

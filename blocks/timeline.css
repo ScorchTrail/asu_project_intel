@@ -1,0 +1,222 @@
+/* Timeline navigation arrows */
+.timeline-nav {
+  display: none;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.timeline-nav__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 113, 197, 0.8);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  pointer-events: all;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-nav__button:hover {
+  background: rgba(0, 113, 197, 1);
+}
+
+.timeline-nav__button--prev {
+  left: 0;
+}
+
+.timeline-nav__button--next {
+  right: 0;
+}
+
+/* Show arrows on horizontal scroll (730px and above) */
+@media (min-width: 730px) {
+  .timeline-nav {
+    display: block;
+  }
+}
+
+.timeline {
+  display: grid;
+  gap: 20px;
+  padding: 40px 20px;
+  width: 100%;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Vertical scroll (under 730px) */
+@media (max-width: 729px) {
+  .timeline {
+    grid-template-columns: 1fr;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .timeline > div {
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .card {
+    min-height: auto;
+  }
+
+  .card:hover {
+    min-height: auto;
+  }
+}
+
+/* Horizontal scroll (730px and above) */
+@media (min-width: 730px) {
+  .timeline {
+    grid-auto-flow: column;
+    grid-template-rows: 1fr;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+  }
+
+  .timeline > div {
+    min-width: 350px;
+    max-width: 350px;
+    flex-shrink: 0;
+  }
+}
+
+/* Scrollbar styling for desktop horizontal scroll */
+.timeline::-webkit-scrollbar {
+  height: 8px;
+}
+
+.timeline::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+.timeline::-webkit-scrollbar-thumb {
+  background: #0071C5;
+  border-radius: 4px;
+}
+
+/* Timeline card styling with image at top and badge positioned over it */
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: min-height 0.4s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 400px;
+  box-sizing: border-box;
+}
+
+/* On hover, expand card height downward */
+.card:hover {
+  min-height: 600px;
+}
+
+/* Generated image with hue color variation and background image */
+.card__image {
+  width: 100%;
+  flex: 0 0 80%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  transition: flex 0.4s ease;
+}
+
+/* Hue overlay on top of background image */
+.card__image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg,
+    hsla(var(--hue), 70%, 60%, 0.6) 0%,
+    hsla(calc(var(--hue) + 20), 75%, 55%, 0.6) 100%);
+  pointer-events: none;
+}
+
+/* On hover, image shrinks to 30% of card */
+.card:hover .card__image {
+  flex: 0 0 30%;
+}
+
+/* Year badge - positioned over the image */
+.card__badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: white;
+  color: hsl(var(--hue), 80%, 50%);
+  padding: 0 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Card content */
+.card__title {
+  font-size: 24px;
+  color: #00285A;
+  margin: 20px 20px 10px 20px;
+  font-weight: 600;
+}
+
+/* Placeholder text (shown by default) */
+.card__placeholder {
+  font-size: 13px;
+  color: #a0c4e0;
+  font-style: italic;
+  margin: 0 20px 20px 20px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Hide placeholder on hover */
+.card:hover .card__placeholder {
+  opacity: 0;
+}
+
+/* Description text (hidden by default) */
+.card__text {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+  margin: 0 20px 20px 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  max-height: 0;
+  overflow: hidden;
+}
+
+/* Show description on card hover */
+.card:hover .card__text {
+  opacity: 1;
+  max-height: 500px;
+}
