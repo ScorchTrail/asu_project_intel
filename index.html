@@ -135,6 +135,8 @@
     document.querySelectorAll('.card').forEach(card => {
       card.addEventListener('mouseenter', function() {
         this.style.boxShadow = '0 8px 16px rgba(0, 113, 197, 0.2)';
+        // Scroll card into view when hovered
+        this.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
       });
       card.addEventListener('mouseleave', function() {
         this.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
