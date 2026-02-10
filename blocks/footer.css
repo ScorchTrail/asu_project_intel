@@ -34,6 +34,11 @@
   color: white;
 }
 
+/* RTL Support - Keep heading left aligned */
+html[dir="rtl"] .footer__heading {
+  text-align: left;
+}
+
 /* Footer Logo */
 .footer__logo {
   height: 30px;
@@ -157,6 +162,11 @@ html[dir="rtl"] .footer__link:hover {
 
   .footer__column {
     padding: 1rem 0.75rem;
+    text-align: center;
+  }
+
+  /* RTL Support for Tablet */
+  html[dir="rtl"] .footer__column {
     text-align: center;
   }
 

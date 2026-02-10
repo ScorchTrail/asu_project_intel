@@ -8,7 +8,7 @@
 
 .timeline__container {
   max-width: 1200px;
-  overflow: hidden;
+  /* overflow: hidden; Removed to allow grid overflow */
 }
 
 /* Timeline Heading */
@@ -28,17 +28,14 @@
   margin-bottom: 2rem;
 }
 
-/* Timeline Container - Flexbox Layout */
+/* Timeline Container - Grid Layout managed by Bootstrap classes */
 .timeline {
-  display: flex;
-  gap: 1.5rem;
-  transition: transform 0.4s ease;
+  /* Removed flex properties to allow Bootstrap grid to handle layout */
   width: 100%;
 }
 
-/* Timeline Cards - 3 cards visible */
+/* Timeline Cards */
 .card {
-  flex: 0 0 280px;
   background: white;
   border-radius: 12px;
   overflow: hidden;
@@ -47,27 +44,29 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  min-height: 280px;
+  /* Removed min-height to let it grow with container/grid */
   box-sizing: border-box;
   padding-bottom: 20px;
+  height: 100%; /* Ensure card fills column height */
 }
 
 /* Card Hover Effect */
 .card:hover {
   box-shadow: 0 8px 16px rgba(0, 113, 197, 0.2);
   transform: translateY(-4px);
-  min-height: 420px;
+  /* Removed min-height expansion */
 }
 
 /* Generated image with hue color variation and background image */
 .card__image {
   width: 100%;
-  flex: 0 0 60%;
+  height: 200px; /* Fixed height for image */
+  flex: 0 0 auto; /* Don't grow/shrink based on flex */
   background-size: cover;
   background-position: center;
   position: relative;
   overflow: hidden;
-  transition: flex 0.4s ease;
+  transition: all 0.4s ease;
 }
 
 /* Hue overlay on top of background image */
@@ -86,7 +85,7 @@
 
 /* On hover, image shrinks */
 .card:hover .card__image {
-  flex: 0 0 35%;
+  height: 140px; /* Slight shrink on hover instead of flex change */
 }
 
 /* Year badge - positioned over the image */
@@ -310,7 +309,4 @@
   }
 }
 
-/* RTL Support */
-html[dir="rtl"] .timeline {
-  direction: rtl;
-}
+/* RTL Support managed by document direction */
