@@ -28,10 +28,38 @@
   margin-bottom: 2rem;
 }
 
-/* Timeline Container - Grid Layout managed by Bootstrap classes */
+/* Timeline Container - Scrollable Horizontal Layout */
 .timeline {
-  /* Removed flex properties to allow Bootstrap grid to handle layout */
-  width: 100%;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 !important; /* Reset row negative margins */
+  padding-bottom: 20px; /* Space for hidden scrollbar area */
+
+  /* Hide scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.timeline::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ensure columns act as scroll items */
+.timeline > * {
+  flex: 0 0 auto !important; /* Prevent squeezing */
+  scroll-snap-align: start; /* Snap to start of container */
+  padding-left: 0.75rem; /* Maintain gutters manually or relying on bootstrap */
+  padding-right: 0.75rem;
+}
+
+/* Center snapping for larger screens if preferred, or maintain start */
+@media (min-width: 992px) {
+  .timeline {
+    scroll-padding: 0;
+  }
 }
 
 /* Timeline Cards */
@@ -204,108 +232,45 @@
 
 /* Responsive Design */
 
-/* Tablet: Medium screens */
-@media (max-width: 768px) {
-  .timeline__section {
-    padding: 2rem 1.5rem;
-    margin: 0;
-  }
-
-  .timeline__heading {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .timeline {
-    gap: 1rem;
-  }
-
-  .card {
-    flex: 0 0 calc(50% - 0.5rem);
-    min-width: 200px;
-    min-height: 300px;
-  }
-
-  .card:hover {
-    min-height: 420px;
-  }
-
-  .card__title {
-    font-size: 1.1rem;
-    margin: 12px 12px 6px 12px;
-  }
-
-  .card__placeholder {
-    font-size: 0.75rem;
-    margin: 0 12px 12px 12px;
-  }
-
-  .card__text {
-    font-size: 0.9rem;
-    margin: 0 12px 12px 12px;
-  }
-
-  .timeline__button {
-    width: 36px;
-    height: 36px;
-    font-size: 1rem;
+/* Desktop (Laptop) - Force 3 cards per view */
+@media (min-width: 921px) {
+  .timeline > * {
+    width: 33.3333%; /* 3 cards exactly */
+    scroll-snap-align: start;
   }
 }
 
-/* Mobile: Small screens */
-@media (max-width: 480px) {
-  .timeline__section {
-    padding: 1.5rem 1rem;
-    margin: 0;
-  }
-
-  .timeline__heading {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-  }
-
+/* Tablet: Display 2 cards per view */
+@media (max-width: 920px) and (min-width: 576px) {
   .timeline {
-    gap: 0.75rem;
+    scroll-padding: 0;
+  }
+
+  .timeline > * {
+    width: 50%; /* 2 cards */
+    scroll-snap-align: start;
+  }
+}
+
+/* Mobile: Display 1 shrunk/compact card per view */
+@media (max-width: 575px) {
+  .timeline {
+    padding-left: 1rem; /* Peeking effect starter padding */
+    padding-right: 1rem;
+  }
+
+  .timeline > * {
+    width: 85%; /* Shrunk/compact */
+    scroll-snap-align: center;
+    margin-right: 0;
+  }
+
+  .card__image {
+     height: 180px;
   }
 
   .card {
-    flex: 0 0 100%;
-    min-width: 100%;
-    min-height: 320px;
-  }
-
-  .card:hover {
-    min-height: 450px;
-  }
-
-  .card__badge {
-    padding: 6px 10px;
-    font-size: 0.95rem;
-  }
-
-  .card__title {
-    font-size: 1rem;
-    margin: 10px 10px 5px 10px;
-  }
-
-  .card__placeholder {
-    font-size: 0.7rem;
-    margin: 0 10px 10px 10px;
-  }
-
-  .card__text {
-    font-size: 0.85rem;
-    margin: 0 10px 10px 10px;
-  }
-
-  .timeline__controls {
-    gap: 0.75rem;
-  }
-
-  .timeline__button {
-    width: 32px;
-    height: 32px;
-    font-size: 0.9rem;
+     min-height: auto;
   }
 }
 

@@ -28,7 +28,7 @@
   <section class="timeline__section">
     <div class="timeline__container container">
       <!-- Timeline Cards Wrapper - Grid Layout -->
-      <div class="row g-4 justify-content-center timeline">
+      <div class="row g-4 timeline">
 
         <!-- Card 1 -->
         <div class="col-12 col-md-6 col-lg-4">
@@ -165,6 +165,17 @@
           </div>
         </div>
       </div>
+
+      <!-- Timeline Controls -->
+      <div class="timeline__controls mt-4">
+        <button class="timeline__button" id="prevBtn" aria-label="Previous">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <button class="timeline__button" id="nextBtn" aria-label="Next">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+
     </div>
   </section>
 
@@ -421,6 +432,62 @@
       setLanguageDirection('ar');
     } else {
       setLanguageDirection('en');
+    }
+
+    // Timeline Scroll Logic
+    const timeline = document.querySelector('.timeline');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    if (timeline && prevBtn && nextBtn) {
+      // Scroll amount determined by the width of a card (approximated)
+      const getScrollAmount = () => {
+        const card = timeline.querySelector('div[class^="col-"]');
+        // Scroll slightly more than one card to ensure next one snaps or comes into view
+        return card ? card.offsetWidth : 300;
+      };
+
+      prevBtn.addEventListener('click', () => {
+        timeline.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+      });
+
+      nextBtn.addEventListener('click', () => {
+        timeline.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+      });
+
+      // Update button states
+      const updateButtons = () => {
+        // Simple tolerance for float arithmetic
+        const tolerance = 5;
+
+        // Check start
+        // Note: In some RTL implementations scrollLeft can be negative.
+        // using Math.abs handles both negative/positive growing scroll implementations.
+        const isAtStart = Math.abs(timeline.scrollLeft) <= tolerance;
+
+        // Check end
+        // scrollWidth = total content width
+        // clientWidth = visible width
+        // scrollLeft = scrolled amount
+        const maxScroll = timeline.scrollWidth - timeline.clientWidth;
+        const currentScroll = Math.abs(timeline.scrollLeft);
+
+        const isAtEnd = currentScroll >= maxScroll - tolerance;
+
+        // In RTL, the logic might reverse for "start" and "end" visually vs programmatically
+        // disregarding direction complexity, just enabling both unless clearly at edge
+        prevBtn.disabled = isAtStart;
+        nextBtn.disabled = isAtEnd;
+      };
+
+      // Initial check
+      timeline.addEventListener('scroll', updateButtons);
+      // Wait for layout to settle and ensure we start at the beginning
+      setTimeout(() => {
+        timeline.scrollLeft = 0;
+        updateButtons();
+      }, 100);
+      window.addEventListener('resize', updateButtons);
     }
   </script>
 </body>
