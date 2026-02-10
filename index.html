@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Intel: Sustainability Through the Ages</title>
+  <!-- Bootstrap CSS for responsive grid and RTL support -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons for visual enhancements -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./pages/index.css" />
   <link rel="icon" href="./img/intel-header.svg" type="image/svg+xml" />
 </head>
@@ -18,13 +22,20 @@
         Explore Intel's journey through time, discovering how our commitment to innovation has shaped a more sustainable future for technology and our planet.
       </p>
   </header>
-  <section class="timeline" id="timelineScroll">
+
+  <main>
+  <!-- Timeline Section -->
+  <section class="timeline__section">
+    <div class="timeline__container container">
+      <!-- Timeline Cards Wrapper -->
+      <div class="timeline__wrapper">
+        <div class="timeline" id="timelineScroll">
     <div class="card" data-hue="240">
       <div class="card__image" style="background-image: url('./img/intel_1.png')"></div>
       <div class="card__badge">1968</div>
-      <h3 class="card__title">Intel Founded</h3>
-      <span class="card__placeholder">Hover to learn more</span>
-      <p class="card__text">
+      <h3 class="card__title" data-en="Intel Founded" data-ar="تأسيس إنتل">Intel Founded</h3>
+      <span class="card__placeholder" data-en="Hover to learn more" data-ar="مرر مؤشرك لمعرفة المزيد">Hover to learn more</span>
+      <p class="card__text" data-en="Robert Noyce and Gordon Moore rename the newly formed company NM Electronics to Intel Corporation, laying the foundation for decades of technological innovation." data-ar="أعاد روبرت نويس وجوردون مور تسمية الشركة المشكلة حديثاً إلى إنتل، مما وضع الأساس لعقود من الابتكار التكنولوجي.">
         Robert Noyce and Gordon Moore rename the newly formed company
         NM Electronics to Intel Corporation, laying the foundation for
         decades of technological innovation.
@@ -118,10 +129,201 @@
         next-generation sustainable semiconductor manufacturing.
       </p>
     </div>
+        </div>
+      </div>
+
+      <!-- Timeline Navigation Controls -->
+      <div class="timeline__controls">
+        <button class="timeline__button timeline__button--prev" id="timelinePrev" aria-label="Previous timeline items">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <button class="timeline__button timeline__button--next" id="timelineNext" aria-label="Next timeline items">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
   </section>
+
+  <!-- Three-Column Content Section with Bootstrap Grid -->
+  <section class="features">
+    <div class="features__container container">
+      <div class="row g-4">
+        <!-- Column 1: RISE Strategy -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="features__card">
+            <div class="features__icon-wrapper">
+              <i class="bi bi-graph-up-arrow features__icon"></i>
+            </div>
+            <h3 class="features__heading">RISE Strategy</h3>
+            <p class="features__text">
+              Under its RISE (Responsible, Inclusive, Sustainable, Enabling) strategy,
+              Intel sets ambitious 2030 goals, including driving industry-wide
+              progress on climate action, water stewardship, and waste reduction.
+            </p>
+            <!-- Learn More Button -->
+            <a href="#" class="features__link">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Column 2: Commitment -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="features__card">
+            <div class="features__icon-wrapper">
+              <i class="bi bi-hand-thumbs-up-fill features__icon"></i>
+            </div>
+            <h3 class="features__heading">Commitment</h3>
+            <p class="features__text">
+              In 2022, Intel pledged to achieve net-zero greenhouse gas emissions
+              (Scope 1 and 2) by 2040. This commitment builds on decades of
+              environmental initiatives and partnerships across the semiconductor
+              industry.
+            </p>
+            <!-- Learn More Button -->
+            <a href="#" class="features__link">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Column 3: Water & Waste -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="features__card">
+            <div class="features__icon-wrapper">
+              <i class="bi bi-droplet-fill features__icon"></i>
+            </div>
+            <h3 class="features__heading">Water &amp; Waste</h3>
+            <p class="features__text">
+              Intel conserves billions of gallons of water annually and
+              collaborates with local communities to restore watersheds.
+              Intel also upcycles and recycles materials to reduce waste and
+              advance a circular economy.
+            </p>
+            <!-- Learn More Button -->
+            <a href="#" class="features__link">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription Form Section -->
+  <section class="newsletter">
+    <div class="newsletter__container container">
+      <h2 class="newsletter__heading">Subscribe to our Newsletter</h2>
+      <p class="newsletter__subtitle">Stay updated on Intel's sustainability journey</p>
+
+      <!-- Bootstrap Form with Enhanced Styling -->
+      <form class="newsletter__form" id="newsletterForm">
+        <div class="newsletter__form-group">
+          <input
+            type="email"
+            class="newsletter__input form-control"
+            id="emailInput"
+            placeholder="Enter your email address"
+            required
+            aria-label="Email address"
+            aria-describedby="emailHelp"
+          />
+          <small id="emailHelp" class="newsletter__help-text">
+            We'll never share your email address.
+          </small>
+        </div>
+
+        <button
+          type="submit"
+          class="newsletter__button btn"
+          aria-label="Subscribe to newsletter"
+        >
+          Subscribe
+        </button>
+      </form>
+
+      <!-- Success Message -->
+      <div class="newsletter__message newsletter__message--success" id="successMessage" style="display: none;">
+        <i class="bi bi-check-circle-fill"></i>
+        <p>Thank you for subscribing!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="footer">
-    <p>Scroll to view timeline | Hover over cards to learn more!</p>
+    <div class="footer__container container">
+      <!-- Footer Content Grid -->
+      <div class="row footer__content">
+
+        <!-- Column 1: About -->
+        <div class="col-12 col-md-6 col-lg-3 footer__column">
+          <h3 class="footer__heading">
+            <img src="./img/intel-header.svg" alt="Intel Logo" class="footer__logo" />
+          </h3>
+          <p class="footer__text">
+            Leading innovation in semiconductor technology and sustainable manufacturing practices.
+          </p>
+        </div>
+
+        <!-- Column 2: Sustainability -->
+        <div class="col-12 col-md-6 col-lg-3 footer__column">
+          <h3 class="footer__heading">Sustainability</h3>
+          <ul class="footer__links">
+            <li><a href="#" class="footer__link">RISE Strategy</a></li>
+            <li><a href="#" class="footer__link">Environmental Goals</a></li>
+            <li><a href="#" class="footer__link">Reports</a></li>
+            <li><a href="#" class="footer__link">Impact Stories</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Company -->
+        <div class="col-12 col-md-6 col-lg-3 footer__column">
+          <h3 class="footer__heading">Company</h3>
+          <ul class="footer__links">
+            <li><a href="#" class="footer__link">About Intel</a></li>
+            <li><a href="#" class="footer__link">Careers</a></li>
+            <li><a href="#" class="footer__link">News & Events</a></li>
+            <li><a href="#" class="footer__link">Investors</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Legal & Social -->
+        <div class="col-12 col-md-6 col-lg-3 footer__column">
+          <h3 class="footer__heading">Legal & Social</h3>
+          <ul class="footer__links">
+            <li><a href="#" class="footer__link">Privacy Policy</a></li>
+            <li><a href="#" class="footer__link">Terms of Use</a></li>
+            <li><a href="#" class="footer__link">Contact</a></li>
+            <li><a href="#" class="footer__link">Sitemap</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer__bottom">
+        <!-- Social Links -->
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="Follow Intel on Facebook">
+            <i class="bi bi-facebook"></i>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Follow Intel on Twitter">
+            <i class="bi bi-twitter-x"></i>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Follow Intel on LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Follow Intel on YouTube">
+            <i class="bi bi-youtube"></i>
+          </a>
+        </div>
+
+        <!-- Copyright -->
+        <p class="footer__copyright">
+          &copy; <span id="currentYear"></span> Intel Corporation. All rights reserved.
+        </p>
+      </div>
+    </div>
   </footer>
+  </main>
+
+  <!-- Bootstrap JS Bundle (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- Script to apply hue colors to cards -->
   <script>
@@ -159,6 +361,92 @@
         timeline.scrollBy({ left: scrollAmount, behavior: 'smooth' });
       });
     }
+
+    // Newsletter form submission
+    document.querySelector('.newsletter__form')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const form = this;
+      const successMessage = document.getElementById('successMessage');
+      const emailInput = document.getElementById('emailInput');
+
+      // Show success message
+      successMessage.style.display = 'block';
+
+      // Reset form
+      form.reset();
+
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        successMessage.style.display = 'none';
+      }, 5000);
+    });
+
+    // Set current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Timeline Navigation
+    const timelineTrack = document.getElementById('timelineScroll');
+    const timelinePrevBtn = document.getElementById('timelinePrev');
+    const timelineNextBtn = document.getElementById('timelineNext');
+    const timelineCards = document.querySelectorAll('.timeline .card');
+    const timelineCardWidth = 280 + 24; // Card width + gap
+    let timelinePosition = 0;
+
+    if (timelineTrack && timelinePrevBtn && timelineNextBtn) {
+      function updateTimelinePosition() {
+        timelineTrack.style.transform = `translateX(-${timelinePosition}px)`;
+
+        // Update button states
+        timelinePrevBtn.disabled = timelinePosition === 0;
+        const totalWidth = 8 * timelineCardWidth;
+        const viewportWidth = 3 * timelineCardWidth;
+        const maxScroll = totalWidth - viewportWidth;
+        timelineNextBtn.disabled = timelinePosition >= maxScroll;
+      }
+
+      timelinePrevBtn.addEventListener('click', () => {
+        if (timelinePosition > 0) {
+          timelinePosition -= timelineCardWidth;
+          updateTimelinePosition();
+        }
+      });
+
+      timelineNextBtn.addEventListener('click', () => {
+        const totalWidth = 8 * timelineCardWidth;
+        const viewportWidth = 3 * timelineCardWidth;
+        const maxScroll = totalWidth - viewportWidth;
+        if (timelinePosition < maxScroll) {
+          timelinePosition += timelineCardWidth;
+          updateTimelinePosition();
+        }
+      });
+
+      // Initialize button states
+      updateTimelinePosition();
+    }
+
+    // RTL/LTR Language Support with Translation
+    function setLanguageDirection(lang) {
+      const htmlElement = document.documentElement;
+      if (lang === 'ar' || lang === 'he') {
+        htmlElement.setAttribute('dir', 'rtl');
+        htmlElement.lang = lang;
+      } else {
+        htmlElement.setAttribute('dir', 'ltr');
+        htmlElement.lang = 'en';
+      }
+
+      // Translate all elements with data-en and data-ar attributes
+      const translatableElements = document.querySelectorAll('[data-en][data-ar]');
+      translatableElements.forEach(element => {
+        const text = element.getAttribute(`data-${lang}`) || element.getAttribute('data-en');
+        element.textContent = text;
+      });
+    }
+
+    // Initialize with English (LTR)
+    setLanguageDirection('en');
   </script>
 </body>
 </html>

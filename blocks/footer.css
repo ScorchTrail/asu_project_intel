@@ -1,16 +1,257 @@
+/* Footer Section - BEM Methodology */
+
 .footer {
   width: 100%;
-  background: #0071C5;
-  background: linear-gradient(89deg,rgba(0, 113, 197, 1) 0%, rgba(0, 40, 90, 1) 100%);
-  padding: 30px 20px;
-  text-align: center;
-  margin-top: 40px;
+  background: linear-gradient(89deg, rgba(0, 113, 197, 1) 0%, rgba(0, 40, 90, 1) 100%);
+  padding: 0 0 1rem 0;
+  color: white;
+  margin-top: 0;
+}
+
+.footer__container {
+  max-width: 1200px;
+}
+
+/* Footer Main Content Grid */
+.footer__content {
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Footer Column */
+.footer__column {
+  padding: 1.5rem;
+  text-align: left;
+}
+
+/* Footer Heading */
+.footer__heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
   color: white;
 }
 
-.footer p {
+/* Footer Logo */
+.footer__logo {
+  height: 30px;
+  max-width: 150px;
+  width: 100%;
+  object-fit: contain;
+  margin-bottom: 0.75rem;
+}
+
+/* Footer Text */
+.footer__text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
   margin: 0;
+}
+
+/* Footer Links List */
+.footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Footer Link Item */
+.footer__links li {
+  margin-bottom: 0.75rem;
+}
+
+/* Footer Link Styling */
+.footer__link {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Link Hover State */
+.footer__link:hover {
   color: white;
-  font-size: 1rem;
-  font-weight: 500;
+  transform: translateX(4px);
+}
+
+/* Link Focus State */
+.footer__link:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* RTL Support for Links */
+html[dir="rtl"] .footer__link:hover {
+  transform: translateX(-4px);
+}
+
+/* Footer Bottom Section */
+.footer__bottom {
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Social Links Container */
+.footer__social {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* Social Link Styling */
+.footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  text-decoration: none;
+  font-size: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+/* Social Link Hover */
+.footer__social-link:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+}
+
+/* Social Link Focus */
+.footer__social-link:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Footer Copyright Text */
+.footer__copyright {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  text-align: center;
+}
+
+/* Responsive Design */
+
+/* Tablet: Medium screens */
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 1.5rem 1rem 1.5rem;
+  }
+
+  .footer__content {
+    padding: 1.5rem 0;
+  }
+
+  .footer__column {
+    padding: 1rem 0.75rem;
+    text-align: center;
+  }
+
+  .footer__heading {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer__links li {
+    display: inline;
+    margin: 0 0.5rem;
+  }
+
+  .footer__bottom {
+    gap: 1rem;
+  }
+
+  .footer__social {
+    gap: 1rem;
+  }
+
+  .footer__social-link {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+
+  .footer__copyright {
+    font-size: 0.8rem;
+  }
+}
+
+/* Mobile: Small screens */
+@media (max-width: 480px) {
+  .footer {
+    padding: 1.5rem 1rem 0.75rem 1rem;
+  }
+
+  .footer__content {
+    padding: 1rem 0;
+  }
+
+  .footer__column {
+    padding: 0.75rem 0;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .footer__heading {
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .footer__logo {
+    height: 25px;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer__text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer__links li {
+    margin: 0.25rem 0.5rem;
+    display: inline;
+  }
+
+  .footer__link {
+    font-size: 0.85rem;
+  }
+
+  .footer__bottom {
+    padding: 1rem 0;
+    gap: 0.75rem;
+  }
+
+  .footer__social {
+    gap: 0.75rem;
+  }
+
+  .footer__social-link {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .footer__copyright {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
 }
